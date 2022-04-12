@@ -39,7 +39,7 @@ body {
 .poster__greeting {
     position: absolute;
     left: 35%;
-    top: 70%;
+    top: 60%;
     color: var(--accent-color);
     font-size: 3rem;
     font-weight: 500;
@@ -58,7 +58,7 @@ body {
     font-size: 1rem;
     position: absolute;
     left: 35%;
-    top: 82%;
+    top: 77%;
     display: flex;
 }
 
@@ -70,4 +70,36 @@ body {
     margin-left: 5px;
     margin-right: 5px;
     font-weight: 600;
+}
+
+ul#countdown {
+    display: flex;
+    position: absolute;
+    top: 84%;
+    left: 35%;
+    transform: translateY(-50%);
+    width: 35%;
+    margin: 0 auto;
+    padding: 15px 0 20px 0;
+    color: #fff;
+    border: 1px solid #adafb2;
+    border-width: 1px 0;
+    overflow: hidden;
+    font-weight: 400;
+}
+
+li {
+    margin: 0 -3px 0 0;
+    padding: 0;
+    display: inline-block;
+    width: 25%;
+    font-size: 72px;
+    font-size: 2vw;
+    text-align: center;
+}
+
+.label {
+    color: #adafb2;
+    font-size: 18px;
+    font-size: 1vw;
 }

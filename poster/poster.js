@@ -75,7 +75,7 @@ let posterSessionTitle = document.getElementById('poster__session_title');
 let posterWallpaper = document.getElementById('poster__generic_wallpaper');
 let posterSessionDescription = document.getElementById('poster__session_description');
 
-let startDate = new Date("Aug 12, 2022 19:30:00").getTime();
+sessionStartDate.getTime();
 
 posterUsername.innerHTML = userName;
 posterSessionTitle.innerHTML = sessionTitle;
@@ -84,15 +84,16 @@ posterWallpaper.src = imgUrl;
 
 var countDownFunc = setInterval(function () {
   let now = new Date().getTime();
-  let timeLeft = startDate - now;
+  let timeLeft = sessionStartDate - now;
 
   var days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
   var hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
   var minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
   var seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
 
-  document.getElementById("days").innerHTML = days + "T ";
-  document.getElementById("hours").innerHTML = hours + "s ";
-  document.getElementById("mins").innerHTML = minutes + "m ";
-  document.getElementById("secs").innerHTML = seconds + "s";
+  document.getElementById("days").innerHTML = days;
+  document.getElementById("hours").innerHTML = hours;
+  document.getElementById("mins").innerHTML = minutes;
+  document.getElementById("secs").innerHTML = seconds;
+
 }, 1000);
