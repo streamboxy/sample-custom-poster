@@ -63,6 +63,8 @@ window.addEventListener("message", (event) => {
   }
 });
 
+alert('connected');
+
 let urlParams = new URLSearchParams(window.location.search);
 let userName = urlParams.get('userName');
 let imgUrl = urlParams.get('imgUrl');
@@ -75,7 +77,8 @@ let posterSessionTitle = document.getElementById('poster__session_title');
 let posterWallpaper = document.getElementById('poster__generic_wallpaper');
 let posterSessionDescription = document.getElementById('poster__session_description');
 
-sessionStartDate.getTime();
+let date = new Date(2022, 5, 20, 12, 44, 20); 
+date.getTime();
 
 posterUsername.innerHTML = userName;
 posterSessionTitle.innerHTML = sessionTitle;
@@ -84,7 +87,8 @@ posterWallpaper.src = imgUrl;
 
 var countDownFunc = setInterval(function () {
   let now = new Date().getTime();
-  let timeLeft = sessionStartDate - now;
+  let timeLeft = date - now;
+  console.log(timeLeft);
 
   var days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
   var hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
