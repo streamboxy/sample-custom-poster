@@ -33,6 +33,10 @@ window.addEventListener("message", (event) => {
         "--accent-color",
         `${event.data.data.accentColor}`
       );
+      document.documentElement.style.setProperty(
+        "--background-color",
+        `${event.data.data.backgroundColor}`
+      );
       break;
     }
     case 2: {
@@ -63,8 +67,6 @@ window.addEventListener("message", (event) => {
   }
 });
 
-alert('connected');
-
 let urlParams = new URLSearchParams(window.location.search);
 let userName = urlParams.get('userName');
 let imgUrl = urlParams.get('imgUrl');
@@ -77,7 +79,7 @@ let posterSessionTitle = document.getElementById('poster__session_title');
 let posterWallpaper = document.getElementById('poster__generic_wallpaper');
 let posterSessionDescription = document.getElementById('poster__session_description');
 
-let date = new Date(2022, 5, 20, 12, 44, 20); 
+let date = new Date(sessionStartDate); 
 date.getTime();
 
 posterUsername.innerHTML = userName;
@@ -88,7 +90,6 @@ posterWallpaper.src = imgUrl;
 var countDownFunc = setInterval(function () {
   let now = new Date().getTime();
   let timeLeft = date - now;
-  console.log(timeLeft);
 
   var days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
   var hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));

@@ -1,5 +1,6 @@
 :root {
     --accent-color: #fff;
+    --background-color: #bbb;
 }
 
 * {
@@ -20,11 +21,13 @@ html {
 
 body {
     font-family: 'Montserrat';
+    height: 100vh;
+    background-color: var(--background-color);
 }
 
 #poster__generic_wallpaper {
     width: 100vw;
-    height: 100vh;
+    height: 99vh;
     object-fit: cover;
 }
 
@@ -52,7 +55,7 @@ body {
 }
 
 #session__title {
-    color: #fff;
+    color: var(--accent-color);
     font-size: 1.4rem;
     font-weight: 500;
     position: absolute;
@@ -80,8 +83,8 @@ ul#countdown {
     width: 35%;
     margin: 0 auto;
     padding: 15px 0 15px 0;
-    color: #737373;
-    border: 1px solid #737373;
+    color: var(--accent-color);
+    border: 1px solid var(--accent-color);
     border-width: 1px 0;
     overflow: hidden;
     font-weight: 400;
@@ -93,7 +96,7 @@ ul#countdown {
     left: 35%;
     font-size: 1rem;
     font-weight: 500;
-    color: #737373;
+    color: var(--accent-color);
 }
 
 li {
@@ -108,7 +111,7 @@ li {
 }
 
 .label {
-    color: #737373;
+    color: var(--accent-color);
     font-size: 16px;
 }
 
@@ -141,6 +144,11 @@ p {
     vertical-align: middle;
 }
 
+#wave__one {
+    fill: var(--accent-color);
+    opacity: 0.7;
+}
+
 inner-header {
     height: 70vh;
     width: 100vw;
@@ -170,7 +178,7 @@ inner-header {
     position: relative;
     height: 20vh;
     text-align: center;
-    background-color: white;
+    background-color: var(--background-color);
 }
 
 /* Animation */
