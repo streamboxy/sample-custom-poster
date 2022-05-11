@@ -6,6 +6,9 @@ With the Custom Poster Project you can create individual posters for your partic
 
 You have only to add some query parameters with the streamboxy-placeholders to the sample url: e.g https://samples.test.streamboxy.com/custom-poster?userName={{userName}}&sessionStartDate={{sessionStartDate}}&sessionTitle={{sessionTitle}}&imgUrl=INSERT_YOUR_IMAGE_URL_HERE
 
+You'll find more details regarding streamboxy placeholders here: 
+https://service.streamboxy.com/support/solutions/articles/50000084900-url-placeholder
+
 
 ## Important for self-hosting
 
