@@ -149,6 +149,20 @@ p {
     opacity: 0.7;
 }
 
+#wave__two {
+    fill: var(--accent-color);
+    opacity: 0.5;
+}
+
+#wave__three {
+    fill: var(--accent-color);
+    opacity: 0.3;
+}
+
+#wave__four {
+    fill: var(--accent-color);
+}
+
 inner-header {
     height: 70vh;
     width: 100vw;
