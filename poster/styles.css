@@ -1,6 +1,6 @@
 :root {
     --accent-color: #fff;
-    --background-color: #bbb;
+    --background-color: #fff;
 }
 
 * {
@@ -185,7 +185,7 @@ inner-header {
     height: 15vh;
     margin-bottom: -7px;
     min-height: 100px;
-    max-height: 185px;
+    /* max-height: 185px; */
 }
 
 .content {
