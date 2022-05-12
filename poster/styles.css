@@ -98,7 +98,7 @@ ul#countdown {
     left: 35%;
     font-size: 1rem;
     font-weight: 500;
-    color: var(--accent-color);
+    color: var(--text-color);
 }
 
 li {
@@ -113,7 +113,7 @@ li {
 }
 
 .label {
-    color: var(--accent-color);
+    color: var(--text-color);
     font-size: 16px;
 }
 
