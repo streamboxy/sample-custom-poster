@@ -43,8 +43,6 @@ window.addEventListener("message", (event) => {
       // Apply new Language
       // Access Language string using event.data.data
       const langTag = event?.data.data?.split("-")[0] ?? event?.data.data;
-      this._languageService.switchLanguage(langTag);
-
       break;
     }
     case 3: {
@@ -57,8 +55,6 @@ window.addEventListener("message", (event) => {
     case 4: {
       // Apply new SessionData
       // Access SessionData Object using event.data.data
-
-      this.updateConfig(event.data.data);
       break;
     }
     default: {
@@ -85,7 +81,10 @@ date.getTime();
 posterUsername.innerHTML = userName;
 posterSessionTitle.innerHTML = sessionTitle;
 posterSessionDescription.innerHTML = sessionDescription;
-posterWallpaper.src = imgUrl;
+
+if(imgUrl != null ){
+  posterWallpaper.src = imgUrl;
+}
 
 var countDownFunc = setInterval(function () {
   let now = new Date().getTime();
@@ -102,3 +101,11 @@ var countDownFunc = setInterval(function () {
   document.getElementById("secs").innerHTML = seconds;
 
 }, 1000);
+
+if (timeLeft < 0) {
+  clearInterval(countDownFunc);
+  document.getElementById("days").innerHTML = "0"
+  document.getElementById("hours").innerHTML = "0" 
+  document.getElementById("mins").innerHTML = "0"
+  document.getElementById("secs").innerHTML = "0"
+}
