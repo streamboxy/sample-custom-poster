@@ -37,18 +37,31 @@ window.addEventListener("message", (event) => {
         "--background-color",
         `${event.data.data.backgroundColor}`
       );
+      document.documentElement.style.setProperty(
+        "--text-color",
+        `${event.data.data.textColor}`
+      );
+      document.documentElement.style.setProperty(
+        "--canvas-color",
+        `${event.data.data.canvasColor}`
+      );
+
+      if(event.data.data.textFontUrl || event.data.data.titleFontUrl){
+        setFontsOnRoot(event.data.data.titleFontUrl, event.data.data.textFontUrl);
+      }
       break;
     }
     case 2: {
       // Apply new Language
       // Access Language string using event.data.data
       const langTag = event?.data.data?.split("-")[0] ?? event?.data.data;
+      setLocale(langTag);
       break;
     }
     case 3: {
       // Apply new UserContext
       // Access UserContext Object using event.data.data
-      this._acs.changeRole(event?.data.data?.role);
+      //this._acs.changeRole(event?.data.data?.role);
 
       break;
     }
@@ -67,24 +80,29 @@ let urlParams = new URLSearchParams(window.location.search);
 let userName = urlParams.get('userName');
 let imgUrl = urlParams.get('imgUrl');
 let sessionTitle = urlParams.get('sessionTitle');
-let sessionDescription = urlParams.get('sessionDescription');
+//let sessionDescription = urlParams.get('sessionDescription');
 let sessionStartDate = urlParams.get('sessionStartDate');
 
 let posterUsername = document.getElementById('poster__username');
 let posterSessionTitle = document.getElementById('poster__session_title');
 let posterWallpaper = document.getElementById('poster__generic_wallpaper');
-let posterSessionDescription = document.getElementById('poster__session_description');
+//let posterSessionDescription = document.getElementById('poster__session_description');
 
 let date = new Date(sessionStartDate); 
 date.getTime();
 
 posterUsername.innerHTML = userName;
 posterSessionTitle.innerHTML = sessionTitle;
-posterSessionDescription.innerHTML = sessionDescription;
+//posterSessionDescription.innerHTML = sessionDescription;
 
 if(imgUrl != null ){
   posterWallpaper.src = imgUrl;
 }
+else {
+  posterWallpaper.style.display = 'none'
+}
+
+/// Countdown
 
 var countDownFunc = setInterval(function () {
   let now = new Date().getTime();
@@ -100,12 +118,70 @@ var countDownFunc = setInterval(function () {
   document.getElementById("mins").innerHTML = minutes;
   document.getElementById("secs").innerHTML = seconds;
 
+
+  if (timeLeft < 0) {
+    clearInterval(countDownFunc);
+    document.getElementById("days").innerHTML = "0"
+    document.getElementById("hours").innerHTML = "0" 
+    document.getElementById("mins").innerHTML = "0"
+    document.getElementById("secs").innerHTML = "0"
+  }
 }, 1000);
 
-if (timeLeft < 0) {
-  clearInterval(countDownFunc);
-  document.getElementById("days").innerHTML = "0"
-  document.getElementById("hours").innerHTML = "0" 
-  document.getElementById("mins").innerHTML = "0"
-  document.getElementById("secs").innerHTML = "0"
+
+//// Style
+
+function setFontsOnRoot(title, text){
+  const font = `
+  @font-face {
+    font-family: 'Standard';
+    src: url('${text}') format('woff2');
+    font-weight: 300;
+  }
+
+  @font-face {
+    font-family: 'Standard';
+    src: url('${title}') format('woff2');
+    font-weight: 600,700,800,900;
+  }`;
+
+  const node = document.createElement('style');
+  node.innerHTML = font;
+  document.body.appendChild(node);
+};
+
+
+
+/// Language
+
+let locale = "de";
+
+async function setLocale(newLocale) {
+  if (newLocale === locale) return;
+  const newTranslations = 
+    await fetchTranslationsFor(newLocale);
+  locale = newLocale;
+  translations = newTranslations;
+  translatePage();
+}
+// Retrieve translations JSON object for the given
+// locale over the network
+async function fetchTranslationsFor(newLocale) {
+  const response = await fetch(`assets/i18n/${newLocale}.json`);
+  return await response.json();
+}
+// Replace the inner text of each element that has a
+// data-i18n-key attribute with the translation corresponding
+// to its data-i18n-key
+function translatePage() {
+  document
+    .querySelectorAll("[data-i18n-key]")
+    .forEach(translateElement);
+}
+
+
+function translateElement(element) {
+  const key = element.getAttribute("data-i18n-key");
+  const translation = translations[key];
+  element.innerText = translation;
 }

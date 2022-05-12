@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- <base href="/custom-poster/"> -->
+  <base href="/custom-poster/"> 
   <title>Poster Template</title>
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -17,13 +17,13 @@
     <div class="inner-header flex">
       <div class="poster__greeting_container">
         <!-- <img src="assets/volicity_9_logo.png" class="company_logo__top_left"> -->
-        <img src="assets/gradient.jpg" id="poster__generic_wallpaper">
+        <img id="poster__generic_wallpaper">
         <div class="greeting__wrapper">
-          <p class="poster__greeting">Herzlich Willkommen, <span id="poster__username">
-            </span> <br> bei <span id="poster__session_title"></span></p>
-          <div id="session__title">Ihr Event: <span><i id="poster__session_description">
+          <p class="poster__greeting" > <span data-i18n-key="welcome">Herzlich Willkommen</span><span>&nbsp;</span><span id="poster__username"></span> 
+            <br> <span data-i18n-key="welcome-by"> bei </span>  <span id="poster__session_title"></span></p>
+          <!--<div id="session__title">Ihr Event: <span><i id="poster__session_description">
             </i></span>
-          </div>
+          </div>-->
         </div>
       </div>
     </div>
@@ -50,25 +50,25 @@
 
   <!--Content starts-->
 
-  <div class="starts">startet in</div>
+  <div class="starts" data-i18n-key="starts">startet in</div>
 
   <div>
     <ul id="countdown">
       <li>
         <div id="days">00</div>
-        <div class="label">Tagen</div>
+        <div class="label" data-i18n-key="days">Tagen</div>
       </li>
       <li>
         <div id="hours">00</div>
-        <div class="label">Stunden</div>
+        <div class="label" data-i18n-key="hours">Stunden</div>
       </li>
       <li>
         <div id="mins">00</div>
-        <div class="label">Minuten</div>
+        <div class="label" data-i18n-key="minutes">Minuten</div>
       </li>
       <li>
         <div id="secs">00</div>
-        <div class="label">Sekunden</div>
+        <div class="label" data-i18n-key="seconds">Sekunden</div>
       </li>
     </ul>
   </div>

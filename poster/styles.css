@@ -1,6 +1,8 @@
 :root {
-    --accent-color: #fff;
-    --background-color: #fff;
+    --accent-color: #ed6c05;
+    --background-color: #292929;
+    --text-color: #ffffff;
+    --canvas-color: #252525;
 }
 
 * {
@@ -20,9 +22,9 @@ html {
 }
 
 body {
-    font-family: 'Montserrat';
+    font-family: "Standard", "Lato", sans-serif !important;
     height: 100vh;
-    background-color: var(--background-color);
+    background-color: var(--canvas-color);
 }
 
 #poster__generic_wallpaper {
@@ -40,7 +42,7 @@ body {
     position: absolute;
     left: 35%;
     top: 60%;
-    color: var(--accent-color);
+    color: var(--text-color);
     font-size: 3rem;
     font-weight: 500;
     text-align: start;
@@ -55,7 +57,7 @@ body {
 }
 
 #session__title {
-    color: var(--accent-color);
+    color: var(--text-color);
     font-size: 1.4rem;
     font-weight: 500;
     position: absolute;
@@ -83,8 +85,8 @@ ul#countdown {
     width: 35%;
     margin: 0 auto;
     padding: 15px 0 15px 0;
-    color: var(--accent-color);
-    border: 1px solid var(--accent-color);
+    color: var(--text-color);
+    border: 1px solid var(--text-color);
     border-width: 1px 0;
     overflow: hidden;
     font-weight: 400;
@@ -116,14 +118,12 @@ li {
 }
 
 h1 {
-    font-family: 'Lato', sans-serif;
     font-weight: 300;
     letter-spacing: 2px;
     font-size: 48px;
 }
 
 p {
-    font-family: 'Lato', sans-serif;
     letter-spacing: 1px;
     font-size: 14px;
     color: #333333;
