@@ -10,6 +10,12 @@ You'll find more details regarding streamboxy placeholders here:
 https://service.streamboxy.com/support/solutions/articles/50000084900-url-placeholder
 
 
+This sample-poster uses the addIn model from Streamboxy to get data from the platform like styles or language changes. To get more information how the addin model works follow the link: 
+https://service.streamboxy.com/support/solutions/articles/50000100749-extend-streamboxy-with-addins
+
+
+
+
 ## Important for self-hosting
 
 In the index.html is inside the header tag a base tag. This tag could be useless for your self hosted project
