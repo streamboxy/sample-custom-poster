@@ -80,20 +80,17 @@ let urlParams = new URLSearchParams(window.location.search);
 let userName = urlParams.get('userName');
 let imgUrl = urlParams.get('imgUrl');
 let sessionTitle = urlParams.get('sessionTitle');
-//let sessionDescription = urlParams.get('sessionDescription');
 let sessionStartDate = urlParams.get('sessionStartDate');
 
 let posterUsername = document.getElementById('poster__username');
 let posterSessionTitle = document.getElementById('poster__session_title');
 let posterWallpaper = document.getElementById('poster__generic_wallpaper');
-//let posterSessionDescription = document.getElementById('poster__session_description');
 
 let date = new Date(sessionStartDate); 
 date.getTime();
 
 posterUsername.innerHTML = userName;
 posterSessionTitle.innerHTML = sessionTitle;
-//posterSessionDescription.innerHTML = sessionDescription;
 
 if(imgUrl != null ){
   posterWallpaper.src = imgUrl;
