@@ -274,6 +274,7 @@ inner-header {
     #session__title {
         left: 7%;
         top: 20%;
+        font-size: 2rem;
     }
 
     .poster__greeting_container {
