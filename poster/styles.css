@@ -234,8 +234,8 @@ inner-header {
 /*Shrinking for mobile*/
 @media (max-width: 768px) {
     .waves {
-        height: 40px;
-        min-height: 40px;
+        height: 60px;
+        min-height: 60px;
     }
 
     .content {
@@ -261,7 +261,8 @@ inner-header {
         right: 0;
         margin-left: auto;
         margin-right: auto;
-        width: 50%;
+        width: 80%;
+        transform: translateY(-30%)
     }
 
     .starts {
@@ -272,5 +273,10 @@ inner-header {
     .poster__greeting,
     #session__title {
         left: 7%;
+        top: 20%;
+    }
+
+    .poster__greeting_container {
+        position: inherit;
     }
 }
