@@ -77,13 +77,26 @@ window.addEventListener("message", (event) => {
 });
 
 let urlParams = new URLSearchParams(window.location.search);
+
+// The user should set EITHER a custom text ...
+let customLineOne = urlParams.get('customLineOne');
+let customLineTwo = urlParams.get('customLineTwo');
+// ... OR the default one and enter the username and session title
 let userName = urlParams.get('userName');
-let imgUrl = urlParams.get('imgUrl');
 let sessionTitle = urlParams.get('sessionTitle');
+
+let imgUrl = urlParams.get('imgUrl');
+let textColor = urlParams.get('textColor');
 let sessionStartDate = urlParams.get('sessionStartDate');
 
+let posterDefaultGreeting = document.getElementById('poster__default_greeting');
 let posterUsername = document.getElementById('poster__username');
 let posterSessionTitle = document.getElementById('poster__session_title');
+
+let posterCustomGreeting = document.getElementById('poster__custom_greeting');
+let posterCustomTextOne = document.getElementById('poster__custom_text__one');
+let posterCustomTextTwo = document.getElementById('poster__custom_text__two');
+
 let posterWallpaper = document.getElementById('poster__generic_wallpaper');
 
 let date = new Date(sessionStartDate); 
@@ -92,15 +105,36 @@ date.getTime();
 posterUsername.innerHTML = userName;
 posterSessionTitle.innerHTML = sessionTitle;
 
-if(imgUrl != null ){
+if (imgUrl != null ){
   posterWallpaper.src = imgUrl;
 }
 else {
   posterWallpaper.style.display = 'none'
 }
 
-/// Countdown
+if (customLineOne != null || customLineTwo != null) {
+  posterDefaultGreeting.style.display = 'none';
+} else {
+  posterCustomGreeting.style.display = 'none';
+}
 
+if (customLineOne != null) {
+  posterCustomTextOne.innerHTML = customLineOne;
+} else {
+  posterCustomTextOne.style.display = 'none';
+}
+if (customLineTwo != null) {
+  posterCustomTextTwo.innerHTML = customLineTwo;
+} else {
+  posterCustomTextTwo.style.display = 'none';
+}
+
+if (textColor != null) {
+  posterDefaultGreeting.style.color = '#' + textColor;
+  posterCustomGreeting.style.color = '#' + textColor;
+}
+
+/// Countdown
 var countDownFunc = setInterval(function () {
   let now = new Date().getTime();
   let timeLeft = date - now;
