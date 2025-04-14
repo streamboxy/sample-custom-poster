@@ -27,13 +27,12 @@ body {
     background-color: var(--canvas-color);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    gap: 50px;
 }
 
 #poster__generic_wallpaper {
     width: 100vw;
     height: 99vh;
-    
 }
 
 .poster__greeting_container {
@@ -71,7 +70,7 @@ body {
     margin-right: 5px;
     font-weight: 600;
 }
-
+ 
 ul#countdown {
     display: flex;
     margin: 0 auto;
@@ -216,6 +215,11 @@ inner-header {
 
 /*Shrinking for mobile*/
 @media (max-width: 768px) {
+
+    body {
+        gap: 20px;
+    }
+
     .waves {
         height: 60px;
         min-height: 60px;
@@ -228,24 +232,26 @@ inner-header {
     h1 {
         font-size: 24px;
     }
+
+    .label {
+        font-size: 12px;
+    }
 }
 
 @media (min-width: 1600px) {
     ul#countdown {
-        bottom: 0%;
         max-width: 30%;
     }
 }
 
 @media (max-width: 1070px) {
     ul#countdown {
-        margin-left: auto;
-        margin-right: auto;
         width: 80%;
     }
 
     .poster__greeting,
     #session__title {
+        padding: 0 5px;
         font-size: 2rem;
     }
 }
