@@ -5,23 +5,26 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <base href="/custom-poster/"> 
+  <base href="/custom-poster/">
   <title>Poster Template</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-  <div class="header">
+  <div class="header" id="#header">
 
     <!--Content before waves-->
     <div class="inner-header flex">
       <div class="poster__greeting_container">
         <!-- <img src="assets/volicity_9_logo.png" class="company_logo__top_left"> -->
-        <img id="poster__generic_wallpaper">
         <div class="greeting__wrapper">
-          <p class="poster__greeting" id="poster__default_greeting"> <span data-i18n-key="welcome">Herzlich Willkommen</span><span>&nbsp;</span><span id="poster__username"></span> 
-            <br> <span data-i18n-key="welcome-by"> bei </span>  <span id="poster__session_title"></span></p>
-          <p class="poster__greeting" id="poster__custom_greeting"> 
+          <p class="poster__greeting" id="poster__default_greeting">
+            <span data-i18n-key="welcome">Herzlich Willkommen</span>
+            <span>&nbsp;</span>
+            <span id="poster__username"></span>
+            <br> <span data-i18n-key="welcome-by"> bei </span> <span id="poster__session_title"></span>
+          </p>
+          <p class="poster__greeting" id="poster__custom_greeting">
             <span id="poster__custom_text__one"></span> <br> <span id="poster__custom_text__two"></span>
           </p>
         </div>
@@ -30,16 +33,16 @@
 
     <!--Waves Container-->
     <div>
-      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-        viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28"
+        preserveAspectRatio="none" shape-rendering="auto">
         <defs>
           <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
         </defs>
         <g class="parallax">
-          <use id="wave__one" xlink:href="#gentle-wave" x="48" y="0"/>
+          <use id="wave__one" xlink:href="#gentle-wave" x="48" y="0" />
           <use id="wave__two" xlink:href="#gentle-wave" x="48" y="3" />
-          <use id="wave__three" xlink:href="#gentle-wave" x="48" y="5"/>
-          <use id="wave__four" xlink:href="#gentle-wave" x="48" y="7"/>
+          <use id="wave__three" xlink:href="#gentle-wave" x="48" y="5" />
+          <use id="wave__four" xlink:href="#gentle-wave" x="48" y="7" />
         </g>
       </svg>
     </div>
@@ -49,8 +52,6 @@
   <!--Header ends-->
 
   <!--Content starts-->
-
-  
 
   <div>
     <ul id="countdown">
