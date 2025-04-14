@@ -97,7 +97,7 @@ let posterCustomGreeting = document.getElementById('poster__custom_greeting');
 let posterCustomTextOne = document.getElementById('poster__custom_text__one');
 let posterCustomTextTwo = document.getElementById('poster__custom_text__two');
 
-let posterWallpaper = document.getElementById('poster__generic_wallpaper');
+let posterBackground = document.getElementById('#header');
 
 let date = new Date(sessionStartDate); 
 date.getTime();
@@ -106,10 +106,11 @@ posterUsername.innerHTML = userName;
 posterSessionTitle.innerHTML = sessionTitle;
 
 if (imgUrl != null ){
-  posterWallpaper.src = imgUrl;
+  posterBackground.style.backgroundImage = 'url(' + imgUrl + ')';
 }
 else {
-  posterWallpaper.style.display = 'none'
+  // remove background image
+  posterBackground.style.backgroundImage = 'none';
 }
 
 if (customLineOne != null || customLineTwo != null) {
