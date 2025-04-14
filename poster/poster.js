@@ -14,7 +14,7 @@ var noticeEvent = {
   type: 0,
 };
 
-// window.parent.postMessage(noticeEvent, coreURL);
+window.parent.postMessage(noticeEvent, coreURL);
 
 window.addEventListener("message", (event) => {
   if (event.origin !== coreURL) {
