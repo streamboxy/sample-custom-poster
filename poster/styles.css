@@ -238,12 +238,6 @@ inner-header {
     }
 }
 
-@media (min-width: 1600px) {
-    ul#countdown {
-        max-width: 30%;
-    }
-}
-
 @media (max-width: 1070px) {
     ul#countdown {
         width: 80%;
@@ -253,5 +247,17 @@ inner-header {
     #session__title {
         padding: 0 5px;
         font-size: 2rem;
+    }
+    body {
+        gap: 20px;
+    }
+}
+
+@media (min-width: 1600px) {
+    ul#countdown {
+        max-width: 30%;
+    }
+    body {
+        gap: 30px
     }
 }
