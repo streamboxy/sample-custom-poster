@@ -97,7 +97,7 @@ let posterCustomGreeting = document.getElementById('poster__custom_greeting');
 let posterCustomTextOne = document.getElementById('poster__custom_text__one');
 let posterCustomTextTwo = document.getElementById('poster__custom_text__two');
 
-let posterBackground = document.getElementById('#header');
+let posterBackground = document.getElementById('header');
 
 let date = new Date(sessionStartDate); 
 date.getTime();
@@ -105,11 +105,9 @@ date.getTime();
 posterUsername.innerHTML = userName;
 posterSessionTitle.innerHTML = sessionTitle;
 
-if (imgUrl != null ){
-  posterBackground.style.backgroundImage = 'url(' + imgUrl + ')';
-}
-else {
-  // remove background image
+if (imgUrl) {
+  posterBackground.style.backgroundImage = `url(${imgUrl})`;
+} else {
   posterBackground.style.backgroundImage = 'none';
 }
 
