@@ -27,7 +27,7 @@ body {
     background-color: var(--canvas-color);
     display: flex;
     flex-direction: column;
-    gap: 50px;
+    gap: 60px;
 }
 
 #poster__generic_wallpaper {
