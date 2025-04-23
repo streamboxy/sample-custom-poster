@@ -46,7 +46,7 @@ window.addEventListener("message", (event) => {
         `${event.data.data.canvasColor}`
       );
 
-      if(event.data.data.textFontUrl || event.data.data.titleFontUrl){
+      if (event.data.data.textFontUrl || event.data.data.titleFontUrl) {
         setFontsOnRoot(event.data.data.titleFontUrl, event.data.data.textFontUrl);
       }
       break;
@@ -85,30 +85,42 @@ let customLineTwo = urlParams.get('customLineTwo');
 let userName = urlParams.get('userName');
 let sessionTitle = urlParams.get('sessionTitle');
 
-let imgUrl = urlParams.get('imgUrl');
-let textColor = urlParams.get('textColor');
-let sessionStartDate = urlParams.get('sessionStartDate');
+const imgUrl = urlParams.get('imgUrl');
+const mobileImgUrl = urlParams.get('mobileImgUrl');
 
-let posterDefaultGreeting = document.getElementById('poster__default_greeting');
-let posterUsername = document.getElementById('poster__username');
-let posterSessionTitle = document.getElementById('poster__session_title');
+const textColor = urlParams.get('textColor');
+const accentColor = urlParams.get('accentColor');
+const sessionStartDate = urlParams.get('sessionStartDate');
 
-let posterCustomGreeting = document.getElementById('poster__custom_greeting');
-let posterCustomTextOne = document.getElementById('poster__custom_text__one');
-let posterCustomTextTwo = document.getElementById('poster__custom_text__two');
 
-let posterBackground = document.getElementById('header');
+const posterDefaultGreeting = document.getElementById('poster__default_greeting');
+const posterUsername = document.getElementById('poster__username');
+const posterSessionTitle = document.getElementById('poster__session_title');
 
-let date = new Date(sessionStartDate); 
+const posterCustomGreeting = document.getElementById('poster__custom_greeting');
+const posterCustomTextOne = document.getElementById('poster__custom_text__one');
+const posterCustomTextTwo = document.getElementById('poster__custom_text__two');
+
+const desktopImg = document.getElementById('desktop_img');
+const mobileImg = document.getElementById('mobile_img');
+
+const posterBackground = document.getElementById('header');
+
+const date = new Date(sessionStartDate);
 date.getTime();
 
 posterUsername.innerHTML = userName;
 posterSessionTitle.innerHTML = sessionTitle;
 
 if (imgUrl) {
-  posterBackground.style.backgroundImage = `url(${imgUrl})`;
-} else {
-  posterBackground.style.backgroundImage = 'none';
+  desktopImg.src = imgUrl;
+  if (mobileImgUrl) mobileImg.src = mobileImgUrl;
+  else mobileImg.src = imgUrl;
+}
+
+else {
+  desktopImg.style.display = 'none';
+  mobileImg.style.display = 'none';
 }
 
 if (customLineOne != null || customLineTwo != null) {
@@ -129,8 +141,11 @@ if (customLineTwo != null) {
 }
 
 if (textColor != null) {
-  posterDefaultGreeting.style.color = '#' + textColor;
-  posterCustomGreeting.style.color = '#' + textColor;
+  this.document.documentElement.style.setProperty('--text-color', '#' + textColor);
+}
+
+if (accentColor != null) {
+  this.document.documentElement.style.setProperty('--accent-color', '#' + accentColor);
 }
 
 /// Countdown
@@ -152,7 +167,7 @@ var countDownFunc = setInterval(function () {
   if (timeLeft < 0) {
     clearInterval(countDownFunc);
     document.getElementById("days").innerHTML = "0"
-    document.getElementById("hours").innerHTML = "0" 
+    document.getElementById("hours").innerHTML = "0"
     document.getElementById("mins").innerHTML = "0"
     document.getElementById("secs").innerHTML = "0"
   }
@@ -161,7 +176,7 @@ var countDownFunc = setInterval(function () {
 
 //// Style
 
-function setFontsOnRoot(title, text){
+function setFontsOnRoot(title, text) {
   const font = `
   @font-face {
     font-family: 'Standard';
@@ -188,7 +203,7 @@ let locale = "de";
 
 async function setLocale(newLocale) {
   if (newLocale === locale) return;
-  const newTranslations = 
+  const newTranslations =
     await fetchTranslationsFor(newLocale);
   locale = newLocale;
   translations = newTranslations;

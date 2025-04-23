@@ -77,6 +77,11 @@ ul#countdown {
     border-width: 1px 0;
     overflow: hidden;
     font-weight: 400;
+
+    position: absolute;
+    left: 0;
+    bottom: 20%;
+    width: 100%;
 }
 
 li {
@@ -154,10 +159,13 @@ p {
 }
 
 .waves {
-    position: relative;
-    display: block;
-    min-height: 30vh;
-    max-width: 100vw;
+    position: absolute;
+
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    height: 20%;
 }
 
 .content {
@@ -228,8 +236,42 @@ p {
 
 }
 
-@media (min-width: 1600px) {
+@media (min-width: 1400px) {
     ul#countdown {
         max-width: 30%;
+        left: 50%;
+        translate: -50%;
+    }
+}
+
+#desktop_img, #mobile_img {
+   position: absolute;
+   top: 0;
+   left: 0;
+
+   width: 100%;
+   height: 100%;
+    object-fit: cover;
+
+    z-index: -1;
+}
+
+@media (min-width: 769px) {
+
+    #desktop_img {
+        display: block;
+    }
+    #mobile_img {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    
+    #desktop_img {
+        display: none;
+    }
+    #mobile_img {
+        display: block;
     }
 }
