@@ -14,67 +14,9 @@ var noticeEvent = {
   type: 0,
 };
 
-window.parent.postMessage(noticeEvent, coreURL);
+  window.parent.postMessage(noticeEvent, coreURL);
 
-window.addEventListener("message", (event) => {
-  if (event.origin !== coreURL) {
-    throw new Error("Will not process message by unknown origin.");
-  }
 
-  switch (event.data.type) {
-    case 0: {
-      break;
-    }
-    case 1: {
-      // Apply new Styling
-      // Access SessionStyle Object using event.data.data
-      //    this._styleService.update(event.data.data);
-      document.documentElement.style.setProperty(
-        "--accent-color",
-        `${event.data.data.accentColor}`
-      );
-      document.documentElement.style.setProperty(
-        "--background-color",
-        `${event.data.data.backgroundColor}`
-      );
-      document.documentElement.style.setProperty(
-        "--text-color",
-        `${event.data.data.textColor}`
-      );
-      document.documentElement.style.setProperty(
-        "--canvas-color",
-        `${event.data.data.canvasColor}`
-      );
-
-      if (event.data.data.textFontUrl || event.data.data.titleFontUrl) {
-        setFontsOnRoot(event.data.data.titleFontUrl, event.data.data.textFontUrl);
-      }
-      break;
-    }
-    case 2: {
-      // Apply new Language
-      // Access Language string using event.data.data
-      const langTag = event?.data.data?.split("-")[0] ?? event?.data.data;
-      setLocale(langTag);
-      break;
-    }
-    case 3: {
-      // Apply new UserContext
-      // Access UserContext Object using event.data.data
-      //this._acs.changeRole(event?.data.data?.role);
-
-      break;
-    }
-    case 4: {
-      // Apply new SessionData
-      // Access SessionData Object using event.data.data
-      break;
-    }
-    default: {
-      break;
-    }
-  }
-});
 
 let urlParams = new URLSearchParams(window.location.search);
 
@@ -88,8 +30,8 @@ let sessionTitle = urlParams.get('sessionTitle');
 const imgUrl = urlParams.get('imgUrl');
 const mobileImgUrl = urlParams.get('mobileImgUrl');
 
-const textColor = urlParams.get('textColor');
-const accentColor = urlParams.get('accentColor');
+let textColor = urlParams.get('textColor');
+let accentColor = urlParams.get('accentColor');
 const sessionStartDate = urlParams.get('sessionStartDate');
 
 
@@ -141,11 +83,11 @@ if (customLineTwo != null) {
 }
 
 if (textColor != null) {
-  this.document.documentElement.style.setProperty('--text-color', '#' + textColor);
+  document.documentElement.style.setProperty('--text-color', '#' + textColor);
 }
 
 if (accentColor != null) {
-  this.document.documentElement.style.setProperty('--accent-color', '#' + accentColor);
+  document.documentElement.style.setProperty('--accent-color', '#' + accentColor);
 }
 
 /// Countdown
@@ -230,3 +172,69 @@ function translateElement(element) {
   const translation = translations[key];
   element.innerText = translation;
 }
+
+window.addEventListener("message", (event) => {
+  if (event.origin !== coreURL) {
+    throw new Error("Will not process message by unknown origin.");
+  }
+
+  switch (event.data.type) {
+    case 0: {
+      break;
+    }
+    case 1: {
+      // Apply new Styling
+      // Access SessionStyle Object using event.data.data
+      //    this._styleService.update(event.data.data);
+      if (!accentColor) {
+        document.documentElement.style.setProperty(
+          "--accent-color",
+          `${event.data.data.accentColor}`
+        );
+      }
+      document.documentElement.style.setProperty(
+        "--background-color",
+        `${event.data.data.backgroundColor}`
+      );
+
+      if (!textColor) {
+        document.documentElement.style.setProperty(
+          "--text-color",
+          `${event.data.data.textColor}`
+        );
+        console.log("Poster: Apply new Styling", event.data.data.textColor);
+      }
+      document.documentElement.style.setProperty(
+        "--canvas-color",
+        `${event.data.data.canvasColor}`
+      );
+
+      if (event.data.data.textFontUrl || event.data.data.titleFontUrl) {
+        setFontsOnRoot(event.data.data.titleFontUrl, event.data.data.textFontUrl);
+      }
+      break;
+    }
+    case 2: {
+      // Apply new Language
+      // Access Language string using event.data.data
+      const langTag = event?.data.data?.split("-")[0] ?? event?.data.data;
+      setLocale(langTag);
+      break;
+    }
+    case 3: {
+      // Apply new UserContext
+      // Access UserContext Object using event.data.data
+      //this._acs.changeRole(event?.data.data?.role);
+
+      break;
+    }
+    case 4: {
+      // Apply new SessionData
+      // Access SessionData Object using event.data.data
+      break;
+    }
+    default: {
+      break;
+    }
+  }
+});
